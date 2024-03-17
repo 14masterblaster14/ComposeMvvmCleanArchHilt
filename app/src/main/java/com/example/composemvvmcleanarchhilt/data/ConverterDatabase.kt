@@ -10,6 +10,8 @@ abstract class ConverterDatabase : RoomDatabase() {
 
     abstract val converterDAO : ConverterDAO
 
+    /* We will lbe injecting DB through Hilt
+
     companion object{
         @Volatile
         private var INSTANCE : ConverterDatabase? = null
@@ -27,4 +29,6 @@ abstract class ConverterDatabase : RoomDatabase() {
             }
         }
     }
+
+    */
 }

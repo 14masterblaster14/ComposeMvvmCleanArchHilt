@@ -1,5 +1,7 @@
 package com.example.composemvvmcleanarchhilt
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.composemvvmcleanarchhilt.data.Conversion
@@ -10,6 +12,10 @@ import kotlinx.coroutines.launch
 
 class ConverterViewModel(private val repository: ConverterRepository) : ViewModel() {
 
+    //ViewModel as a stateholder
+    val selectedConversion: MutableState<Conversion?> =  mutableStateOf(null)
+    val inputText: MutableState<String> =   mutableStateOf("")
+    val typedValue =  mutableStateOf("0.0")
     fun getConversions() = listOf(
         Conversion(1,"Pounds to Kilograms","lbs","kg",0.453592),
         Conversion(2,"Kilograms to Pounds","kg","lbs",2.20462),

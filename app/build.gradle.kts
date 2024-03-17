@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    //alias(libs.plugins.hiltAndroid)
+    //alias(libs.plugins.kotlinKapt)
 }
 
 android {
@@ -48,7 +50,11 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
+
+
+
 
 dependencies {
 
@@ -63,12 +69,16 @@ dependencies {
     implementation(libs.engage.core)
 
     //Room
-    implementation(libs.androidx.room.compiler)
+    //implementation(libs.androidx.room.compiler)
     implementation(libs.androidx.room.runtime)
 
     //Material3
     implementation(libs.androidx.material3)
-    implementation(libs.material3.android)
+    //implementation(libs.material3.android)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    //kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

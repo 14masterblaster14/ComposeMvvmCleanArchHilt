@@ -11,6 +11,8 @@ import com.example.composemvvmcleanarchhilt.compose.BaseScreen
 import com.example.composemvvmcleanarchhilt.data.ConverterDatabase
 import com.example.composemvvmcleanarchhilt.data.ConverterRepositoryImpl
 import com.example.composemvvmcleanarchhilt.ui.theme.ComposeMvvmCleanArchHiltTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  *  Parent Composable - BaseScreen
@@ -29,18 +31,38 @@ import com.example.composemvvmcleanarchhilt.ui.theme.ComposeMvvmCleanArchHiltThe
  *      We should never pass down the ViewModel instances to other composables.
  *      We pass only the data they need and functions that perform the required logic as parameter.
  *
+ *  Dependencies :
+ *                  ConverterViewModelFactory(private val repository: ConverterRepository)
+ *                  class ConverterViewModel(private val repository: ConverterRepository)
+ *                  class ConverterRepositoryImpl(private val dao : ConverterDAO)
  *
+ *                  val dao = ConverterDatabase.getInstance(application).converterDAO
+ *                  val repository = ConverterRepositoryImpl(dao)
+ *                  val factory = ConverterViewModelFactory(repository)
  *
- *
+ *  So Finally we need below dependencies:
+ *                  ConverterViewModelFactory
+ *                  ConverterRepository
+ *                  ConverterDatabase
  */
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var factory : ConverterViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        /*
+            // We are removing it with Hilt Dependency Injection
 
         val dao = ConverterDatabase.getInstance(application).converterDAO
         val repository = ConverterRepositoryImpl(dao)
         val factory = ConverterViewModelFactory(repository)
+
+         */
 
         setContent {
             ComposeMvvmCleanArchHiltTheme {
