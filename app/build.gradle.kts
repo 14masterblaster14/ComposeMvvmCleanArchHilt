@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.googleDaggerHiltAndroid)
+
     //alias(libs.plugins.hiltAndroid)
     //alias(libs.plugins.kotlinKapt)
 }
@@ -66,18 +68,28 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.engage.core)
+    //implementation(libs.engage.core)
+
+    //Hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.android.compiler)
+
+    //Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.room.compiler)
 
     //Room
     //implementation(libs.androidx.room.compiler)
-    implementation(libs.androidx.room.runtime)
+    //implementation(libs.androidx.room.runtime)
 
     //Material3
     implementation(libs.androidx.material3)
     //implementation(libs.material3.android)
 
     //Hilt
-    implementation(libs.hilt.android)
+    //implementation(libs.hilt.android)
     //kapt("com.google.dagger:hilt-android-compiler:2.44")
 
     testImplementation(libs.junit)
